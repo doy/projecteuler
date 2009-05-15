@@ -6,7 +6,7 @@ use DateTime;
 my $day = DateTime->new(year => 1901, month => 1, day => 1);
 my $count = 0;
 while ($day->year < 2001) {
-    $count++ if $day->day_of_week == 7 && $day->day_of_month == 1;
-    $day->add(days => 1);
+    $count++ if $day->day_of_week == 7;
+    $day->add(months => 1);
 }
 print "$count\n";
