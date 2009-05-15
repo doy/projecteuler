@@ -24,19 +24,18 @@ my $triangle_txt = <<'TRIANGLE';
 TRIANGLE
 my @triangle_lines = split /\n/, $triangle_txt;
 my @triangle = map { [split ' ', $_] } @triangle_lines;
-use DDS;
 
 my $graph = Graph::Implicit->new(sub {
     my ($vx, $vy) = split ' ', shift;
     return if $vx == @triangle - 1;
-    #print "$vx, $vy -> ", $vx + 1, ", $vy and ", $vx + 1, ", ", $vy + 1, "\n";
     return ([($vx + 1) . " " . $vy,       100 - $triangle[$vx + 1][$vy]],
             [($vx + 1) . " " . ($vy + 1), 100 - $triangle[$vx + 1][$vy + 1]]);
 });
 my ($paths, $blah) = $graph->dijkstra("0 0");
 my @paths;
-for my $i (0..14) {
-    push @paths, [Graph::Implicit::make_path($paths, "14 $i")];
+my $bottom_row = @triangle - 1;
+for my $i (0..$bottom_row) {
+    push @paths, [Graph::Implicit::make_path($paths, "$bottom_row $i")];
 }
 my @path_values = map { [map { my ($x, $y) = split; $triangle[$x][$y] } @$_] }
                       @paths;
