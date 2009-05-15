@@ -1,0 +1,29 @@
+#!/usr/bin/bc
+
+scale = 20
+phi = (1 + sqrt(5)) / 2
+loglimit = 1000 - 1 + l(sqrt(5))/l(10)
+
+scale = 0
+n = 1
+min = -1
+max = -1
+while (1) {
+    print n, " (", min, ", ", max, ")\n"
+    scale = 20
+    if (l(phi^n - (1 - phi)^n)/l(10) > loglimit) {
+        max = n
+    } else {
+        min = n
+    }
+    scale = 0
+    if (max - min == 1) {
+        max
+        halt
+    }
+    if (max == -1) {
+        n *= 2
+    } else {
+        n = (max + min) / 2
+    }
+}
