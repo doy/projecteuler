@@ -1,0 +1,10 @@
+#!/usr/bin/bc
+
+scale = 0
+
+num = 0
+for (n = 1; n <= 1000; n++) {
+    num += n^n
+    num %= 10^10
+}
+num
