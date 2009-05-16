@@ -1,0 +1,18 @@
+#!/usr/bin/bc
+
+scale = 0
+numer = 1
+denom = 2
+count = 0
+for (iter = 0; iter < 1000; iter++) {
+    real_numer = numer + denom
+    if (length(real_numer) > length(denom)) {
+        dummy = count++
+    }
+    numer += denom * 2
+    tmp = numer
+    numer = denom
+    denom = tmp
+}
+count
+halt
