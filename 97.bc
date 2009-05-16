@@ -1,0 +1,10 @@
+#!/usr/bin/bc
+
+accum = 1
+for (i = 0; i < 7830457; i++) {
+    accum *= 2
+    scale = 0
+    accum = accum % 10^10
+    scale = 20
+}
+28433 * accum + 1
