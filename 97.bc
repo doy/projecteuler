@@ -8,3 +8,4 @@ for (i = 0; i < 7830457; i++) {
     scale = 20
 }
 28433 * accum + 1
+halt
